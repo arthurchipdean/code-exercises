@@ -30,7 +30,7 @@
             }
 
             // Fire the event for text already present
-            sendContentToMirror();
+            updateMirror();
 
             function createMirror() {
                 var element =
@@ -40,13 +40,13 @@
                 return element;
             }
 
-            function sendContentToMirror() {
+            function updateMirror() {
                 //Convert special characters, add extra line for padding.
                 mirror.innerHTML =  htmlentities(textarea.value)+ '.<br/>.';
             }
 
             function autoSize() {
-                sendContentToMirror();
+                updateMirror();
                 if ($textarea.height() != $mirror.height()) {
                     if($mirror.height() > maxHeight) {
                         textarea.style.overflow = 'auto';
