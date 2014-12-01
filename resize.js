@@ -9,7 +9,8 @@
                 mirror = $mirror[0],
                 textarea = this,
                 $textarea = $(this),
-                maxHeight =  parseInt(params.maxHeight,10);
+                maxHeight =  parseInt(params.maxHeight,10),
+                ieVersion = msieversion();
 
             mirror.style.padding    = $textarea.css('padding');
             mirror.style.width      = $textarea.css('width');
@@ -23,7 +24,7 @@
             textarea.style.resize = "none";
 
             //Internet Explorer versions prior to 9 do not support the "input" event & addEventListener function.
-            if(msieversion() < 9) {
+            if(ieVersion && ieVersion < 9) {
                 textarea.onkeyup = autoSize;
             } else {
                 textarea.addEventListener('input', autoSize);
