@@ -18,25 +18,24 @@
             mirror.style.lineHeight = $textarea.css('line-height');
             mirror.style.fontWeight = $textarea.css('font-weight');
 
-            // Style the textarea
             textarea.style.overflow = "hidden";
             textarea.style.minHeight = params.minHeight;
             textarea.style.resize = "none";
 
             //Internet Explorer versions prior to 9 do not support the "input" event & addEventListener function.
             if(msieversion() < 9) {
-                this.onkeyup = autoSize;
+                textarea.onkeyup = autoSize;
             } else {
-                this.addEventListener('input', autoSize);
+                textarea.addEventListener('input', autoSize);
             }
 
             // Fire the event for text already present
-            sendContentToMirror(this);
-
-
+            sendContentToMirror();
 
             function createMirror() {
-                var element = $('<div style="display:none;white-space:pre-wrap;word-wrap:break-word;overflow:hidden;overflow-wrap:break-word;"></div>').addClass(params.cloneClass);
+                var element =
+                    $('<div style="display:none;white-space:pre-wrap;word-wrap:break-word;overflow:hidden;overflow-wrap:break-word;"></div>')
+                    .addClass(params.cloneClass);
                 $('body').append(element);
                 return element;
             }
