@@ -31,7 +31,7 @@
             }
 
             // Fire the event for text already present
-            updateMirror();
+            autoSize();
 
             function createMirror() {
                 var element =
